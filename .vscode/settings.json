@@ -1,0 +1,10 @@
+{
+  "python.defaultInterpreterPath": ".\\venv\\Scripts\\python.exe",
+  "python.analysis.indexing": false,
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/.hg/store/**": true,
+		"venv/**/*": true,
+	}
+}

@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+python-multipart
+passlib[bcrypt]
+python-jose[cryptography]
+pydantic
+google-api-python-client
+oauth2client
+pandas
