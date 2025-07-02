@@ -13,7 +13,7 @@ def create_receipt(
     file_url: str,
     receipt_data: ReceiptCreate
 ):
-    # Step 1: Save main receipt
+   
     receipt = Receipt(
         user_id=user_id,
         file_url=file_url,
@@ -23,7 +23,7 @@ def create_receipt(
     db.commit()
     db.refresh(receipt)
 
-    # Step 2: Save sub-model based on category
+
     if receipt_data.category == "travel" and receipt_data.travel:
         travel = receipt_data.travel
         travel_entry = TravelReceipt(
@@ -70,6 +70,5 @@ def create_receipt(
         )
         db.add(other_entry)
 
-    # Final commit
     db.commit()
     return receipt

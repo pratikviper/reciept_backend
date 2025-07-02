@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String #, text
+from sqlalchemy.sql import expression
 from app.db.session import Base
 
 class User(Base):
@@ -8,4 +9,4 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    is_admin = Column(Integer, default=0)
+    is_admin = Column(Boolean, server_default=expression.false())

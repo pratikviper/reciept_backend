@@ -2,23 +2,21 @@ from pydantic import BaseModel
 from datetime import datetime, date
 from typing import Optional
 
-# ---------- Submodels ----------
 
-# Travel
 class TravelReceiptCreate(BaseModel):
     from_location: str
     to_location: str
     kilometers: float
     price: float
-    mode_of_travel: str        # Plain text
+    mode_of_travel: str
     custom_mode: Optional[str] = None
 
 class TravelReceiptOut(TravelReceiptCreate):
     pass
 
-# Food
+
 class FoodReceiptCreate(BaseModel):
-    food_type: str             # e.g., breakfast, lunch
+    food_type: str            
     restaurant_name: Optional[str] = None
     amount: float
     notes: Optional[str] = None
@@ -26,7 +24,7 @@ class FoodReceiptCreate(BaseModel):
 class FoodReceiptOut(FoodReceiptCreate):
     pass
 
-# Living
+
 class LivingReceiptCreate(BaseModel):
     hotel_name: str
     address: Optional[str] = None
@@ -37,7 +35,7 @@ class LivingReceiptCreate(BaseModel):
 class LivingReceiptOut(LivingReceiptCreate):
     pass
 
-# Other
+
 class OtherReceiptCreate(BaseModel):
     title: str
     description: Optional[str] = None
@@ -46,15 +44,15 @@ class OtherReceiptCreate(BaseModel):
 class OtherReceiptOut(OtherReceiptCreate):
     pass
 
-# ---------- Main Create ----------
+
 class ReceiptCreate(BaseModel):
-    category: str                            # Just string now
+    category: str                         
     travel: Optional[TravelReceiptCreate] = None
     food: Optional[FoodReceiptCreate] = None
     living: Optional[LivingReceiptCreate] = None
     other: Optional[OtherReceiptCreate] = None
 
-# ---------- Output ----------
+
 class ReceiptOut(BaseModel):
     id: int
     file_url: str
